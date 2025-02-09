@@ -1,27 +1,8 @@
-[TOC]
-
 # 项目介绍
 
 此项目是通过使用开源项目[clash](https://github.com/Dreamacro/clash)作为核心程序，再结合脚本实现简单的代理功能。
 
 主要是为了解决我们在服务器上下载GitHub等一些国外资源速度慢的问题。
-
-<br>
-
-# 使用须知
-
-- 运行本项目建议使用root用户，或者使用 sudo 提权。
-- 使用过程中如遇到问题，请优先查已有的 [issues](https://github.com/wanhebin/clash-for-linux/issues)。
-- 在进行issues提交前，请替换提交内容中是敏感信息（例如：订阅地址）。
-- 本项目是基于 [clash](https://github.com/Dreamacro/clash) 、[yacd](https://github.com/haishanh/yacd) 进行的配置整合，关于clash、yacd的详细配置请去原项目查看。
-- 此项目不提供任何订阅信息，请自行准备Clash订阅地址。
-- 运行前请手动更改`.env`文件中的`CLASH_URL`变量值，否则无法正常运行。
-- 当前在RHEL系列和Debian系列Linux系统中测试过，其他系列可能需要适当修改脚本。
-- 支持 x86_64/aarch64 平台
-
-> **注意**：当你在使用此项目时，遇到任何无法独自解决的问题请优先前往 [Issues](https://github.com/wanhebin/clash-for-linux/issues) 寻找解决方法。由于空闲时间有限，后续将不再对Issues中 “已经解答”、“已有解决方案” 的问题进行重复性的回答。
-
-<br>
 
 # 使用教程
 
@@ -30,7 +11,7 @@
 下载项目
 
 ```bash
-$ git clone https://github.com/wanhebin/clash-for-linux.git
+$ git clone https://github.com/octopus058/clash-for-linux.git
 ```
 
 进入到项目目录，编辑`.env`文件，修改变量`CLASH_URL`的值。
@@ -40,13 +21,9 @@ $ cd clash-for-linux
 $ vim .env
 ```
 
-> **注意：** `.env` 文件中的变量 `CLASH_SECRET` 为自定义 Clash Secret，值为空时，脚本将自动生成随机字符串。
-
-<br>
+> **注意：** `.env` 文件中的变量 `CLASH_SECRET` 为自定义 Clash Secret，写123最方便。
 
 ## 启动程序
-
-直接运行脚本文件`start.sh`
 
 - 进入项目目录
 
@@ -104,16 +81,12 @@ https_proxy=http://127.0.0.1:7890
 
 以上步鄹如果正常，说明服务clash程序启动成功，现在就可以体验高速下载github资源了。
 
-<br>
-
 ## 重启程序
 
 如果需要对Clash配置进行修改，请修改 `conf/config.yaml` 文件。然后运行 `restart.sh` 脚本进行重启。
 
 > **注意：**
 > 重启脚本 `restart.sh` 不会更新订阅信息。
-
-<br>
 
 ## 停止程序
 
@@ -138,27 +111,23 @@ $ proxy_off
 
 然后检查程序端口、进程以及环境变量`http_proxy|https_proxy`，若都没则说明服务正常关闭。
 
-
-<br>
-
 ## Clash Dashboard
 
 - 访问 Clash Dashboard
 
-通过浏览器访问 `start.sh` 执行成功后输出的地址，例如：http://192.168.0.1:9090/ui
+通过浏览器访问 `start.sh` 执行成功后输出的地址，例如：http://127.0.0.1:9090/ui
 
 - 登录管理界面
 
-在`API Base URL`一栏中输入：http://\<ip\>:9090 ，在`Secret(optional)`一栏中输入启动成功后输出的Secret。
+在`API Base URL`一栏中输入：http://\<ip\>:9090 ，在`Secret(optional)`一栏中输入启动成功后输出的Secret (123)。
 
 点击Add并选择刚刚输入的管理界面地址，之后便可在浏览器上进行一些配置。
 
-- 更多教程
+- 更改系统代理
 
-此 Clash Dashboard 使用的是[yacd](https://github.com/haishanh/yacd)项目，详细使用方法请移步到yacd上查询。
+按照 Dashboard 的配置输入 HTTP 和 SOCKS 代理即可，如下图：
 
-
-<br>
+![9bcfea39bca39f8a4c50a9f7d063b67](https://github.com/user-attachments/assets/68584a55-a6f5-4041-962b-f6e793b27f3b)
 
 # 常见问题
 
